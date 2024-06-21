@@ -1,0 +1,1 @@
+INSERT INTO genres (genre) VALUES ('new1'), ('new2'), ('new3');
