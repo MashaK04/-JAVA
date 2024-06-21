@@ -1,0 +1,4 @@
+INSERT INTO books (title, author, year, genre_id)
+VALUES
+    ('To Kill a Mockingbird', 'Harper Lee', 1960, (SELECT id FROM genres WHERE genre = 'Fiction')),
+    ('1984', 'George Orwell', 1949, (SELECT id FROM genres WHERE genre = 'Dystopian'));
