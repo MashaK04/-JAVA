@@ -1,7 +1,1 @@
-# sql
-CREATE TABLE books (
-    book_id INT AUTO_INCREMENT PRIMARY KEY,
-    title VARCHAR(100) NOT NULL,
-    release_year YEAR,
-    author VARCHAR(100) NOT NULL
-);
+Решение курса Основы Java - https://stepik.org/course/82867/syllabus
