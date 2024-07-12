@@ -10,13 +10,11 @@ public class window6 {
         frame.setSize(300, 200);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        // Создание радио-кнопок для выбора времени года
         JRadioButton spring = new JRadioButton("Весна");
         JRadioButton summer = new JRadioButton("Лето");
         JRadioButton autumn = new JRadioButton("Осень");
         JRadioButton winter = new JRadioButton("Зима");
 
-        // Объединение радио-кнопок в одну группу
         ButtonGroup seasonGroup = new ButtonGroup();
         seasonGroup.add(spring);
         seasonGroup.add(summer);
