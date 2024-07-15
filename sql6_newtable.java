@@ -8,8 +8,7 @@ public class sql6_newtable {
     public static Connection conn;
     public static Statement statmt;
 
-    public static void Conn() throws ClassNotFoundException, SQLException
-    {
+    public static void Conn() throws ClassNotFoundException, SQLException {
         conn = null;
         Class.forName("org.sqlite.JDBC");
         conn = DriverManager.getConnection("jdbc:sqlite:My_cats.db");
@@ -17,22 +16,18 @@ public class sql6_newtable {
         System.out.println("База Подключена!");
     }
 
-
-    public static void CreateDB() throws ClassNotFoundException, SQLException
-    {
+    public static void CreateDB() throws ClassNotFoundException, SQLException {
         statmt = conn.createStatement();
-        statmt.execute("CREATE TABLE IF NOT EXISTS cats (" +
+        statmt.execute("CREATE TABLE IF NOT EXISTS cats1 (" +
                 "id INT AUTO_INCREMENT PRIMARY KEY," +
                 "name VARCHAR(255) NOT NULL," +
-                "age INT," +
-                "type_id INT," +
+                "age INT NOT NULL," +
+                "weight DOUBLE NOT NULL," +
+                "type_id INT NOT NULL," +
                 "FOREIGN KEY (type_id) REFERENCES types(id)" +
                 ")");
-
         System.out.println("Таблица создана или уже существует.");
     }
-
-
 
     public static void CloseDB() throws ClassNotFoundException, SQLException
     {
