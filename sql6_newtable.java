@@ -18,8 +18,8 @@ public class sql6_newtable {
 
     public static void CreateDB() throws ClassNotFoundException, SQLException {
         statmt = conn.createStatement();
-        statmt.execute("CREATE TABLE IF NOT EXISTS cats1 (" +
-                "id INT AUTO_INCREMENT PRIMARY KEY," +
+        statmt.execute("CREATE TABLE IF NOT EXISTS cats2 (" +
+                "id INTEGER PRIMARY KEY AUTOINCREMENT," +
                 "name VARCHAR(255) NOT NULL," +
                 "age INT NOT NULL," +
                 "weight DOUBLE NOT NULL," +
