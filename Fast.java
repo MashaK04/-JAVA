@@ -8,21 +8,21 @@ import java.io.IOException;
 import java.net.URL;
 
 public class Fast {
-    static JFrame frame = new JFrame();//создаем форму
-    static JLabel l;//объект с картинкой
-    static int change=50;//на сколько точек двигаем объект
+    static JFrame frame = new JFrame();
+    static JLabel l;
+    static int change=50;
 
-    static public void move(KeyEvent e){//метод движения по клавиатуре
-        int thisChange=e.isShiftDown()?change*2:change;//если нажата shift, то двигаемся вдвое быстрее
-        switch (e.getKeyCode()){//делаем проверку на границы формы, пользуясь реальным размером окна, а не первоначально заданным, а также заданным смещением, чтобы вписаться в panel
+    static public void move(KeyEvent e){
+        int thisChange=e.isShiftDown()?change*2:change;
+        switch (e.getKeyCode()){
             case (KeyEvent.VK_LEFT):
-                if (l.getX()-thisChange>=0)//проверяем, вписываемся ли в окно, или надо будет перейти его границу
+                if (l.getX()-thisChange>=0)
                     l.setLocation(l.getX()-thisChange,l.getY());
-                else {//если переходим границу то проверяем, нажат ли шифт (двойная скорость) и находится ли картинка на расстоянии менее себя от границы
+                else {
                     if (e.isShiftDown() && l.getX() <= l.getWidth())
-                        l.setLocation((int) frame.getContentPane().getSize().getWidth() - l.getWidth()*2 - 5, l.getY());//если да, то к ставим картинку не просто на противоположенную границу, а еще на плюс картинку
+                        l.setLocation((int) frame.getContentPane().getSize().getWidth() - l.getWidth()*2 - 5, l.getY());
                     else
-                        l.setLocation((int) frame.getContentPane().getSize().getWidth() - l.getWidth() - 5, l.getY());//если нет то ставим картинку возле противоположенной границы
+                        l.setLocation((int) frame.getContentPane().getSize().getWidth() - l.getWidth() - 5, l.getY());
                 }
                 break;
             case (KeyEvent.VK_RIGHT):
@@ -59,22 +59,22 @@ public class Fast {
     }
 
     public static void main(String[] args) throws IOException {
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//способ выхода из формы
-        frame.setTitle("Сложное перемещение клавиатурой с SHIFT");//заголовок формы
-        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();//определяем разрешение монитора
-        int width=300, height=300;//задаем размер окна
-        frame.setBounds(dim.width / 2 - width / 2, dim.height / 2 - height / 2, width, height);//выставляем размеры окна
-        BufferedImage im = ImageIO.read(new URL("https://wdorogu.ru/images/wp-content/uploads/2020/10/feda8bbd51ff950-scaled.jpg"));//скачиваем картинку
-        JPanel panel = new JPanel (new FlowLayout(FlowLayout.LEFT));//создаем панель, чтобы ей отлавливать события клавиатуры, ставим ее слева
-        panel.setFocusable(true);//делаем у панели возможность принимать фокус, иначе она не сможет отловить события клавиатуры
-        l = new JLabel(new ImageIcon(im),JLabel.RIGHT);//создаем объект слева
-        panel.add(l, BorderLayout.NORTH);//добавляем на панель
-        frame.add(panel);//добавляем панель на форму
-        panel.addKeyListener(new KeyAdapter() {//добавляем слушателя на панель
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setTitle("Сложное перемещение клавиатурой с SHIFT");
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+        int width=300, height=300;
+        frame.setBounds(dim.width / 2 - width / 2, dim.height / 2 - height / 2, width, height);
+        BufferedImage im = ImageIO.read(new URL("https://wdorogu.ru/images/wp-content/uploads/2020/10/feda8bbd51ff950-scaled.jpg"));
+        JPanel panel = new JPanel (new FlowLayout(FlowLayout.LEFT));
+        panel.setFocusable(true)
+        l = new JLabel(new ImageIcon(im),JLabel.RIGHT);
+        panel.add(l, BorderLayout.NORTH);
+        frame.add(panel);
+        panel.addKeyListener(new KeyAdapter() {
             public void keyReleased(KeyEvent e) {
-                move(e);//метод движения
+                move(e);
             }
         });
-        frame.setVisible(true);//делаем форму видимой
+        frame.setVisible(true);
     }
 }
