@@ -43,6 +43,7 @@ public class sql5_select {
         if (rs.next()) {
             return rs.getString("type");
         }
+        return null;
     }
 
     public static void get_type_where(String where) throws SQLException {

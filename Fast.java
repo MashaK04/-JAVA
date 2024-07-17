@@ -66,7 +66,7 @@ public class Fast {
         frame.setBounds(dim.width / 2 - width / 2, dim.height / 2 - height / 2, width, height);
         BufferedImage im = ImageIO.read(new URL("https://wdorogu.ru/images/wp-content/uploads/2020/10/feda8bbd51ff950-scaled.jpg"));
         JPanel panel = new JPanel (new FlowLayout(FlowLayout.LEFT));
-        panel.setFocusable(true)
+        panel.setFocusable(true);
         l = new JLabel(new ImageIcon(im),JLabel.RIGHT);
         panel.add(l, BorderLayout.NORTH);
         frame.add(panel);
